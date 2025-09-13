@@ -9,9 +9,8 @@ import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import { Button, Stack } from "@mui/material";
-import Typography from "@mui/material/Typography";
+import Paper from "@mui/material/Paper";
 import { useState, type SyntheticEvent } from "react";
-import SaveIcon from "@mui/icons-material/Save";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 
@@ -53,107 +52,125 @@ const App = () => {
 			<div style={{ marginTop: "100px" }}></div>
 
 			<Container maxWidth="sm">
-				<ToggleButtonGroup
-					disabled={loading}
-					size="small"
-					color="primary"
-					value={loginFormName}
-					exclusive
-					onChange={handleChange}
-					aria-label="Platform"
-					fullWidth
-					sx={{ marginBottom: 2 }}
-				>
-					<ToggleButton value="login">Login</ToggleButton>
-					<ToggleButton value="register">Register</ToggleButton>
-				</ToggleButtonGroup>
-				{loginFormName === "login" ? (
+				<Paper elevation={3} sx={{ padding: 3 }}>
 					<Stack spacing={2}>
-						<TextField
-							// Пока идёт загрузка(loading), disabled запрещает ввод
+						<ToggleButtonGroup
 							disabled={loading}
-							// value нужен для синхронизации того что мы напечатали с пермееной username, т.к. пока всё хранится в input
-							value={username}
-							onChange={handleUserNameChange}
 							size="small"
-							label="email"
-							variant="filled"
-							slotProps={{
-								input: {
-									startAdornment: (
-										<InputAdornment position="start">
-											<AccountCircle />
-										</InputAdornment>
-									),
-								},
-							}}
-						/>
-						<TextField
-							disabled={loading}
-							value={userpassword}
-							onChange={handlePasswordChange}
-							size="small"
-							label="password"
-							variant="filled"
-							type="password"
-							slotProps={{
-								input: {
-									startAdornment: (
-										<InputAdornment position="start">
-											<AccountCircle />
-										</InputAdornment>
-									),
-								},
-							}}
-						/>
-						<Button onClick={handleLoggin} variant="contained" loading={loading} loadingPosition="start">
-							{loading ? "Loading" : "Login"}
-						</Button>
+							color="primary"
+							value={loginFormName}
+							exclusive
+							onChange={handleChange}
+							aria-label="Platform"
+							fullWidth
+							sx={{ marginBottom: 2 }}
+						>
+							<ToggleButton value="login">Login</ToggleButton>
+							<ToggleButton value="register">Register</ToggleButton>
+						</ToggleButtonGroup>
+						{loginFormName === "login" ? (
+							<Stack spacing={2}>
+								<TextField
+									// Пока идёт загрузка(loading), disabled запрещает ввод
+									disabled={loading}
+									// value нужен для синхронизации того что мы напечатали с пермееной username, т.к. пока всё хранится в input
+									value={username}
+									onChange={handleUserNameChange}
+									size="small"
+									label="email"
+									variant="filled"
+									slotProps={{
+										input: {
+											startAdornment: (
+												<InputAdornment position="start">
+													<AccountCircle />
+												</InputAdornment>
+											),
+										},
+									}}
+								/>
+								<TextField
+									disabled={loading}
+									value={userpassword}
+									onChange={handlePasswordChange}
+									size="small"
+									label="password"
+									variant="filled"
+									type="password"
+									slotProps={{
+										input: {
+											startAdornment: (
+												<InputAdornment position="start">
+													<AccountCircle />
+												</InputAdornment>
+											),
+										},
+									}}
+								/>
+								<Button
+									size="small"
+									onClick={handleLoggin}
+									variant="contained"
+									loading={loading}
+									loadingPosition="start"
+									sx={{ backgroundColor: "#1976d2" }}
+								>
+									{loading ? "Loading" : "Login"}
+								</Button>
+							</Stack>
+						) : (
+							<Stack spacing={2}>
+								<TextField
+									// Пока идёт загрузка(loading), disabled запрещает ввод
+									disabled={loading}
+									// value нужен для синхронизации того что мы напечатали с пермееной username, т.к. пока всё хранится в input
+									value={username}
+									onChange={handleUserNameChange}
+									size="small"
+									label="email"
+									variant="filled"
+									slotProps={{
+										input: {
+											startAdornment: (
+												<InputAdornment position="start">
+													<AccountCircle />
+												</InputAdornment>
+											),
+										},
+									}}
+								/>
+								<TextField
+									disabled={loading}
+									value={userpassword}
+									onChange={handlePasswordChange}
+									size="small"
+									label="password"
+									variant="filled"
+									type="password"
+									slotProps={{
+										input: {
+											startAdornment: (
+												<InputAdornment position="start">
+													<AccountCircle />
+												</InputAdornment>
+											),
+										},
+									}}
+								/>
+								<Button
+									size="small"
+									onClick={handleLoggin}
+									variant="contained"
+									loading={loading}
+									loadingPosition="start"
+									sx={{ backgroundColor: "#dc004e" }}
+								>
+									{loading ? "Loading" : "Register"}
+								</Button>
+							</Stack>
+						)}
 					</Stack>
-				) : (
-					<Stack spacing={2}>
-						<TextField
-							// Пока идёт загрузка(loading), disabled запрещает ввод
-							disabled={loading}
-							// value нужен для синхронизации того что мы напечатали с пермееной username, т.к. пока всё хранится в input
-							value={username}
-							onChange={handleUserNameChange}
-							size="small"
-							label="email"
-							variant="filled"
-							slotProps={{
-								input: {
-									startAdornment: (
-										<InputAdornment position="start">
-											<AccountCircle />
-										</InputAdornment>
-									),
-								},
-							}}
-						/>
-						<TextField
-							disabled={loading}
-							value={userpassword}
-							onChange={handlePasswordChange}
-							size="small"
-							label="password"
-							variant="filled"
-							type="password"
-							slotProps={{
-								input: {
-									startAdornment: (
-										<InputAdornment position="start">
-											<AccountCircle />
-										</InputAdornment>
-									),
-								},
-							}}
-						/>
-						<Button onClick={handleLoggin} variant="contained" loading={loading} loadingPosition="start">
-							{loading ? "Loading" : "Register"}
-						</Button>
-					</Stack>
-				)}
+				</Paper>
 			</Container>
 		</>
 	);
